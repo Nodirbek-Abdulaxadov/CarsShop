@@ -5,14 +5,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDB")));
 
-builder.Services.AddTransient<IBrendInterface, BrendRepository>();
-builder.Services.AddTransient<ICarInterface, CarRepository>();
-builder.Services.AddTransient<IOrderInterface, OrderRepository>();
-builder.Services.AddTransient<IColorInterface, ColorRepository>();
-builder.Services.AddTransient<IImageInterface, ImageRepository>();
-builder.Services.AddTransient<IUserInterface, UserRepository>();
-builder.Services.AddTransient<IModelInterface, ModelRepository>();
-builder.Services.AddTransient<ICategoryInterface, CategoryRepository>();
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+builder.Services.AddTransient<ICategoryService, CategoryService>();
 
 var app = builder.Build();
 

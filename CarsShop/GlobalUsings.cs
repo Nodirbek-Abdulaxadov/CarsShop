@@ -3,3 +3,7 @@ global using CarsShop.Data.Interfaces;
 global using Microsoft.EntityFrameworkCore;
 global using CarsShop.Data;
 global using CarsShop.Data.Repositories;
+global using CarsShop.BusinessLogic.DTOs.CategoryDTOs;
+global using CarsShop.BusinessLogic.Common;
+global using CarsShop.BusinessLogic.Interfaces;
+global using CarsShop.BusinessLogic.Services;
