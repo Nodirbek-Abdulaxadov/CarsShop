@@ -1,30 +1,38 @@
 ﻿namespace CarsShop.BusinessLogic.Services;
 
-public class CategoryService(IUnitOfWork unitOfWork)
+public class CategoryService(IUnitOfWork unitOfWork,
+                             IFileService fileService)
     : ICategoryService
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
+    private readonly IFileService _fileService = fileService;
 
     public void Create(AddCategoryDto categoryDto)
     {
         if (categoryDto == null)
         {
-            throw new CustomException("CategoryDto was null");
+            throw new CustomException("", "CategoryDto was null");
         }
 
         if (string.IsNullOrEmpty(categoryDto.Name))
         {
-            throw new CustomException("Category name is required");
+            throw new CustomException("Name", "Category name is required");
         }
 
         if (categoryDto.Name.Length < 3 || categoryDto.Name.Length > 30)
         {
-            throw new CustomException("Category name must be between 3 and 30 characters");
+            throw new CustomException("Name", "Category name must be between 3 and 30 characters");
+        }
+
+        if (categoryDto.file == null)
+        {
+            throw new CustomException("file", "Category image is required");
         }
 
         Category category = new()
         {
-            Name = categoryDto.Name
+            Name = categoryDto.Name,
+            ImageUrl = _fileService.UploadImage(categoryDto.file)
         };
 
         _unitOfWork.Categories.Add(category);
@@ -36,9 +44,9 @@ public class CategoryService(IUnitOfWork unitOfWork)
 
         if (category == null)
         {
-            throw new CustomException("Category not found");
+            throw new CustomException("", "Category not found");
         }
-
+        _fileService.DeleteImage(category.ImageUrl);
         _unitOfWork.Categories.Delete(category.Id);
     }
 
@@ -48,7 +56,8 @@ public class CategoryService(IUnitOfWork unitOfWork)
         var list = categories.Select(c => new CategoryDto()
         {
             Id = c.Id,
-            Name = c.Name
+            Name = c.Name,
+            ImagePath = c.ImageUrl
         }).ToList();
 
         return list;
@@ -60,43 +69,47 @@ public class CategoryService(IUnitOfWork unitOfWork)
 
         if (category == null)
         {
-            throw new CustomException("Category not found");
+            throw new CustomException("", "Category not found");
         }
 
         var dto = new CategoryDto()
         {
             Id = category.Id,
-            Name = category.Name
+            Name = category.Name,
+            ImagePath = category.ImageUrl
         };
 
         return dto;
     }
 
-    public void Update(CategoryDto categoryDto)
+    public void Update(UpdateCategoryDto categoryDto)
     {
         var category = _unitOfWork.Categories.GetById(categoryDto.Id);
 
         if (category == null)
         {
-            throw new CustomException("Category not found");
+            throw new CustomException("", "Category not found");
         }
 
         if (string.IsNullOrEmpty(categoryDto.Name))
         {
-            throw new CustomException("Category name is required");
+            throw new CustomException("", "Category name is required");
         }
 
         if (categoryDto.Name.Length < 3 || categoryDto.Name.Length > 30)
         {
-            throw new CustomException("Category name must be between 3 and 30 characters");
+            throw new CustomException("", "Category name must be between 3 and 30 characters");
         }
 
-        var dto = new Category()
+        if (categoryDto.file != null)
         {
-            Id = categoryDto.Id,
-            Name = categoryDto.Name
-        };
+            _fileService.DeleteImage(category.ImageUrl);
+            categoryDto.ImagePath = _fileService.UploadImage(categoryDto.file);
+        }
 
-        _unitOfWork.Categories.Update(dto);
+        category.Name = categoryDto.Name;
+        category.ImageUrl = categoryDto.ImagePath;
+
+        _unitOfWork.Categories.Update(category);
     }
 }

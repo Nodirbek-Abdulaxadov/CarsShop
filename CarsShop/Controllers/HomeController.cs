@@ -8,5 +8,14 @@ namespace CarsShop.Controllers
         {
             return View();
         }
+
+        public IActionResult Error(string? url)
+        {
+            if (url == null)
+            {
+                url = "/";
+            }
+            return View("Error404", url);
+        }
     }
 }
