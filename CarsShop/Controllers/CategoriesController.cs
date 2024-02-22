@@ -7,10 +7,11 @@ public class CategoriesController(ICategoryService categoryService)
 {
     private readonly ICategoryService _categoryService = categoryService;
 
-    public IActionResult Index()
+    public IActionResult Index(int pageNumber = 1)
     {
         var categories = _categoryService.GetAll();
-        return View(categories);
+        var pageModel = new PageModel<CategoryDto>(categories, pageNumber);
+        return View(pageModel);
     }
 
     public IActionResult Add()
