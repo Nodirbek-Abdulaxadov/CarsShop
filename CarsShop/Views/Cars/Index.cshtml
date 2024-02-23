@@ -15,10 +15,10 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Description</th>
                             <th>Price</th>
                             <th>Brend</th>
                             <th>Category</th>
+                            <th>Batafsil</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -28,7 +28,6 @@
                             <tr>
                                 <td><strong>@car.Id</strong></td>
                                 <td>@car.Name</td>
-                                <td>@car.Description</td>
                                 <td>@car.Price</td>
                                 <td>
                                     <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
@@ -51,6 +50,12 @@
                                             <img src="@car.Category.ImagePath" asp-append-version="true" alt="Avatar" style="object-fit: cover"/>
                                         </li>
                                     </ul>
+                                </td>
+                                <td>
+                                    <a asp-controller="cars" asp-action="detail" asp-route-id="@car.Id">
+                                        <i class="bi bi-eye-fill"></i>
+                                        Ko'rish
+                                    </a>
                                 </td>
                                 <td>
                                     <div class="dropdown">

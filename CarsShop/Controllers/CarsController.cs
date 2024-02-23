@@ -97,4 +97,17 @@ public class CarsController (ICarService carService,
             return View(dto);
         }
     }
+
+    public IActionResult Detail(int id)
+    {
+        try
+        {
+            var car = _carService.GetById(id);
+            return View(car);
+        }
+        catch (CustomException)
+        {
+            return RedirectToAction("error", "home", new { url = "/categories/index" });
+        }
+    }
 }

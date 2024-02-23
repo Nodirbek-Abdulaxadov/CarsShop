@@ -53,7 +53,7 @@ public class CarService(IUnitOfWork unitOfWork)
 
     public CarDto GetById(int id)
     {
-        var car = _unitOfWork.Cars.GetById(id);
+        var car = _unitOfWork.Cars.GetCarsWithReleations().FirstOrDefault(c => c.Id == id);
         if (car == null)
         {
             throw new CustomException("", "Car not found");
