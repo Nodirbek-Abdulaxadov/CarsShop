@@ -13,8 +13,6 @@ public class UnitOfWork(AppDbContext dbContext)
 
     public IImageInterface Images => new ImageRepository(dbContext);
 
-    public IModelInterface Models => new ModelRepository(dbContext);
-
     public IOrderInterface Orders => new OrderRepository(dbContext);
 
     public IUserInterface Users => new UserRepository(dbContext);

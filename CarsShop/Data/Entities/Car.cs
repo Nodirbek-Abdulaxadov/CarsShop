@@ -11,7 +11,6 @@ public class Car : BaseEntity
     public int BrendId { get; set; }
     public Brend Brend { get; set; } = new();
 
-    public List<Model> Models { get; set; } = new();
     public List<Color> Colors { get; set; } = new();
     public List<Order> Orders { get; set; } = new();
 }

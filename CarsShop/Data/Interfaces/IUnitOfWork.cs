@@ -7,7 +7,6 @@ public interface IUnitOfWork
     ICategoryInterface Categories { get; }
     IColorInterface Colors { get; }
     IImageInterface Images { get; }
-    IModelInterface Models { get; }
     IOrderInterface Orders { get; }
     IUserInterface Users { get; }
 }
