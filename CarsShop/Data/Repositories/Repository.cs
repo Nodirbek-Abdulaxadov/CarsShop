@@ -3,7 +3,7 @@
 public class Repository<TEntity> (AppDbContext dbContext)
     : IRepository<TEntity> where TEntity : BaseEntity
 {
-    private readonly AppDbContext _dbContext = dbContext;
+    protected readonly AppDbContext _dbContext = dbContext;
     private readonly DbSet<TEntity> _dbSet = dbContext.Set<TEntity>();
 
     public void Add(TEntity entity)

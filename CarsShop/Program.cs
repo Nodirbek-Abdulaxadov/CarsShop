@@ -1,3 +1,5 @@
+using AutoMapper;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
@@ -7,7 +9,16 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<IBrendService, BrendService>();
+builder.Services.AddTransient<ICarService, CarService>();
 builder.Services.AddTransient<IFileService, FileService>();
+
+var mapConfig = new MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new AutoMapperProfile());
+});
+
+builder.Services.AddSingleton(mapConfig.CreateMapper());
 
 var app = builder.Build();
 
