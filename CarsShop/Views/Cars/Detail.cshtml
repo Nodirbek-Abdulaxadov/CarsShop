@@ -2,7 +2,11 @@
 
 <div class="container-xxl flex-grow-1 container-p-y">
 
-    <div class="card p-5">
+    <a class="btn btn-outline-secondary mb-2" asp-controller="cars" asp-action="index">
+        <i class="bi bi-arrow-left"></i> Back
+    </a>
+    <div class="card p-5"> 
+
         <div class="row">
             <div class="col-md-6">
                 <h4>Name: @Model.Name</h4>
@@ -25,5 +29,76 @@
             </div>
         </div>
         <p><b>Description:</b> <br /> @Model.Description</p>
+    </div>
+
+    <div class="card p-5 mt-4">
+        <div class="container-xxl flex-grow-1 container-p-y">
+
+            <div>
+                <div class="d-flex justify-content-between align-items-center me-3">
+                    <h5 class="card-header">Colors table</h5>
+                    <a asp-controller="colors" asp-action="add" asp-route-carId="@Model.Id" class="btn btn-primary">+ New</a>
+                </div>
+                <div class="table-responsive text-nowrap">
+                    @if (Model.Colors.Any())
+                    {
+                        <table class="table table-hover mb-5">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Color</th>
+                                    <th>Images</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                                @foreach (var color in Model.Colors)
+                                {
+                                    <tr>
+                                        <td><strong>@color.Id</strong></td>
+                                        <td>@color.Name</td>
+                                        <th>
+                                            <div style="width: 40px; height: 40px; border-radius: 50%; background-color: @color.HexCode; border: 1px solid #6f6f6f;">
+
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <a asp-controller="colors" asp-action="images" asp-route-id="@color.Id">
+                                                <i class="bi bi-eye-fill"></i>
+                                                Ko'rish
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a asp-controller="colors" asp-action="edit" asp-route-colorId="@color.Id"
+                                                       asp-route-carId="@color.CarId"
+                                                       class="dropdown-item"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                                    <a asp-controller="colors" asp-action="delete" asp-route-colorId="@color.Id"
+                                                       asp-route-carId="@color.CarId"
+                                                       onclick="return confirm('Are you sure delete?')"
+                                                       class="dropdown-item"><i class="bx bx-trash me-1"></i> Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <div class="card-body">
+                            <p class="card-text">No colors found.</p>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>

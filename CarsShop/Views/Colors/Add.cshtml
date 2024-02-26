@@ -1,0 +1,39 @@
+﻿@model AddColorDto
+
+<div class="d-flex justify-content-center">
+    <div class="mt-4" style="width: 70%">
+        <form asp-controller="colors" asp-action="add" enctype="multipart/form-data">
+            <input type="hidden" asp-for="CarId" value="@Model.CarId" />
+            <div class="card mb-4">
+                <h5 class="card-header">New Color</h5>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="defaultFormControlInput" class="form-label">Name</label>
+                        <input asp-for="Name" type="text"
+                               class="form-control"
+                               id="defaultFormControlInput"
+                               aria-describedby="defaultFormControlHelp" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="defaultFormControlInput" class="form-label">Color</label>
+                        <input asp-for="HexCode" type="color"
+                               class="form-control"
+                               id="defaultFormControlInput"
+                               aria-describedby="defaultFormControlHelp" />
+                        <span asp-validation-for="HexCode" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Image</label>
+                        <input asp-for="Files" class="form-control" type="file" id="formFile" multiple/>
+                        <span asp-validation-for="Files" class="text-danger"></span>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a asp-controller="cars" asp-action="detail" asp-route-id="@Model.CarId" class="me-2 btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

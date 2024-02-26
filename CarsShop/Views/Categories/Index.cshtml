@@ -224,16 +224,3 @@
     </div>
 
 </div>
-
-<script>
-    var pageNumber = document.getElementById('pageNumber').value;
-    var Items = document.getElementsByClassName('page-item');
-
-    //get a element inside of Items
-    for (var i = 0; i < Items.length; i++) {
-        if (Items[i].children[0].innerText == pageNumber) {
-            Items[i].classList.add('active');
-        }
-    }
-
-</script>

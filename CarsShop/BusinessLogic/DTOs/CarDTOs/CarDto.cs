@@ -1,4 +1,6 @@
-﻿namespace CarsShop.BusinessLogic.DTOs.CarDTOs;
+﻿using CarsShop.BusinessLogic.DTOs.ColorDTOs;
+
+namespace CarsShop.BusinessLogic.DTOs.CarDTOs;
 
 public class CarDto
 {
@@ -8,4 +10,6 @@ public class CarDto
     public double Price { get; set; }
     public CategoryDto Category { get; set; } = new();
     public BrendDto Brend { get; set; } = new();
+
+    public List<ColorDto> Colors { get; set; } = new();
 }

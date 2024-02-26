@@ -282,5 +282,18 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <script>
+        var pageNumber = document.getElementById('pageNumber').value;
+        var Items = document.getElementsByClassName('page-item');
+
+        //get a element inside of Items
+        for (var i = 0; i < Items.length; i++) {
+            if (Items[i].children[0].innerText == pageNumber) {
+                Items[i].classList.add('active');
+            }
+        }
+
+    </script>
 </body>
 </html>

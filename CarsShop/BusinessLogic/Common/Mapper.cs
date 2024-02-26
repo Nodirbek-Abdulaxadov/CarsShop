@@ -1,4 +1,6 @@
-﻿namespace CarsShop.BusinessLogic.Common;
+﻿using CarsShop.BusinessLogic.DTOs.ColorDTOs;
+
+namespace CarsShop.BusinessLogic.Common;
 
 public static class Mapper
 {
@@ -24,6 +26,7 @@ public static class Mapper
             Description = car.Description,
             Price = car.Price,
             Category = (CategoryDto)car.Category,
-            Brend = (BrendDto)car.Brend
+            Brend = (BrendDto)car.Brend,
+            Colors = car.Colors.Select(c => (ColorDto)c).ToList()
         };
 }
