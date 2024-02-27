@@ -1,8 +1,92 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IndexViewModel
 
-<div class="text-center mt-5">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    .carousel-item img {
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
+    }
+
+    .card {
+        margin: 20px 10px;
+    }
+
+    .card img {
+        height: 200px;
+        object-fit: cover;
+            filter: drop-shadow(1px 2px 3px #9e9e9e);
+    }
+</style>
+
+<div id="carouselExampleFade" class="carousel slide carousel-fade">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/assets/img/carousel/1.jpg" class="d-block" alt="...">
+            <!-- text over image center with bold and white color -->
+            <div class="carousel-caption d-none d-md-block" style="bottom: 15rem; left: 40rem">
+                <h1 class="text-white font-weight-bold" style="font-size: 64px">Chevrolet</h1>
+                <h2 class="text-white font-weight-bold" style="font-size: 84px">TAHOE-2</h2>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/assets/img/carousel/2.jpg" class="d-block" alt="...">
+            <!-- text over image center with bold and white color -->
+            <div class="carousel-caption d-none d-md-block" style="bottom: 15rem; left: 40rem">
+                <h1 class="text-white font-weight-bold" style="font-size: 64px">Chevrolet</h1>
+                <h2 class="text-white font-weight-bold" style="font-size: 84px">TRAVERSE</h2>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/assets/img/carousel/3.jpg" class="d-block" alt="...">
+            <!-- text over image center with bold and white color -->
+            <div class="carousel-caption d-none d-md-block" style="bottom: 15rem; left: 40rem">
+                <h1 class="text-white font-weight-bold" style="font-size: 64px">Chevrolet</h1>
+                <h2 class="text-white font-weight-bold" style="font-size: 84px">EQUINOX</h2>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+
+<div class="container mt-5 mb-5">
+    <h2 class="text-center">Our Cars</h2>
+    <hr/>
+    <div class="d-flex justify-content-start flex-wrap mt-3">
+        @foreach (var car in Model.Cars)
+        {
+            <div class="card" style="width: 22rem;">
+                <img src="@car.Colors.FirstOrDefault().Images.FirstOrDefault().Url" asp-append-version="true" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between" style="align-items: center">
+                        <div>
+                            <h6 class="card-title">@car.Brend.Name</h6>
+                            <h4>@car.Name</h4>
+                        </div>
+                        <div>
+                            <h5 class="card-text">Price: $@car.Price</h5>
+                        </div>
+                    </div>
+                   <div class="my-2">
+                        <a href="#" class="w-100 btn btn-dark">More</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<div class="container">
+    @{
+        await Html.RenderPartialAsync("BrendCarousel", Model.Brends);
+    }
 </div>

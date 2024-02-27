@@ -1,21 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CarsShop.Models;
 
-namespace CarsShop.Controllers
+namespace CarsShop.Controllers;
+
+public class HomeController (ICarService carService, 
+                             IBrendService brendService)
+    : Controller
 {
-    public class HomeController : Controller
-    {
-        public IActionResult Index()
-        {
-            return View();
-        }
+    private readonly ICarService _carService = carService;
+    private readonly IBrendService _brendService = brendService;
 
-        public IActionResult Error(string? url)
+    public IActionResult Index()
+    {
+        var cars = _carService.GetAll();
+        var brends = _brendService.GetAll();
+
+        IndexViewModel viewModel = new()
         {
-            if (url == null)
-            {
-                url = "/";
-            }
-            return View("Error404", url);
-        }
+            Cars = cars,
+            Brends = brends
+        };
+
+        return View(viewModel);
     }
 }

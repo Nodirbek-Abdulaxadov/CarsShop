@@ -7,5 +7,6 @@ public class ColorRepository(AppDbContext dbContext)
     public Color GetByIdWithImages(int id)
         => _dbContext.Colors
             .Include(c => c.Images)
+            .Include(x => x.Car)
             .FirstOrDefault(c => c.Id == id);
 }

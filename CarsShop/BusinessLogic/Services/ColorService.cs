@@ -87,7 +87,6 @@ public class ColorService(IUnitOfWork unitOfWork,
         color.Name = carDto.Name;
         color.HexCode = carDto.HexCode;
         color.CarId = carDto.CarId;
-        color.Car = null;
         
 
         _unitOfWork.Colors.Update(color);

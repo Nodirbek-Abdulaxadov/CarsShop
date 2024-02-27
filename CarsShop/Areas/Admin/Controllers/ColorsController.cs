@@ -1,7 +1,6 @@
-﻿using CarsShop.BusinessLogic.DTOs.ColorDTOs;
+﻿namespace CarsShop.Areas.Admin.Controllers;
 
-namespace CarsShop.Controllers;
-
+[Area("admin")]
 public class ColorsController(IColorService colorService)
     : Controller
 {

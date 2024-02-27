@@ -1,5 +1,6 @@
-﻿namespace CarsShop.Controllers;
+﻿namespace CarsShop.Areas.Admin.Controllers;
 
+[Area("admin")]
 public class CarsController (ICarService carService,
                              ICategoryService categoryService,
                              IBrendService brendService)

@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿namespace CarsShop.Areas.Admin.Controllers;
 
-namespace CarsShop.Controllers;
-
+[Area("admin")]
 public class CategoriesController(ICategoryService categoryService)
     : Controller
 {

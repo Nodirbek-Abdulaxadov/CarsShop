@@ -10,3 +10,4 @@ global using CarsShop.BusinessLogic.Common;
 global using CarsShop.BusinessLogic.Interfaces;
 global using CarsShop.BusinessLogic.Services;
 global using Microsoft.AspNetCore.Mvc;
+global using CarsShop.BusinessLogic.DTOs.ColorDTOs;
