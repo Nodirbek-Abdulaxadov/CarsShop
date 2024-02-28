@@ -1,19 +1,30 @@
-﻿
+﻿@model LoginDto
 
 <div class="container">
-    <form>
+    <h2 class="text-center mt-5">Login to your account</h2>
+    <div class="d-flex justify-content-center mt-5">
+        <form asp-controller="auth" asp-action="login" style="width: 35%">
         <div class="mb-3">
             <label for="tel" class="form-label">Phone Number</label>
-            <input type="tel" class="form-control" id="tel">
+            <input asp-for="TelNomer" type="tel" class="form-control" id="tel">
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <input asp-for="Password" type="password" class="form-control" id="exampleInputPassword1">
         </div>
         <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <input asp-for="RememberMe" type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Remember Me</label>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="mb-2">
+        @if (!string.IsNullOrEmpty(Model.Error))
+        {
+            <span class="text-danger">@Model.Error</span>
+        }
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Log in</button>
+        </div>
     </form>
+</div>
 </div>

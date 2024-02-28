@@ -1,7 +1,6 @@
 ﻿using CarsShop.Models;
 
 namespace CarsShop.Controllers;
-
 public class HomeController (ICarService carService, 
                              IBrendService brendService)
     : Controller
@@ -11,6 +10,9 @@ public class HomeController (ICarService carService,
 
     public IActionResult Index()
     {
+        var res = HttpContext.User;
+
+        
         var cars = _carService.GetAll();
         var brends = _brendService.GetAll();
 

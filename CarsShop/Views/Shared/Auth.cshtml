@@ -4,7 +4,18 @@
     }
 </style>
 
-<div class="d-flex justify-content-between" style="width: 200px">
-    <a asp-controller="auth" asp-action="login" class="auth-link btn btn-outline-success">Log in</a>
-    <a asp-controller="auth" asp-action="register" class="auth-link btn btn-outline-success">Register</a>
-</div>
+@inject IAuthService authService
+
+@if (!authService.IsLoggedIn())
+{
+    <div class="d-flex justify-content-between" style="width: 200px">
+        <a asp-controller="auth" asp-action="login" class="auth-link btn btn-outline-success">Log in</a>
+        <a asp-controller="auth" asp-action="register" class="auth-link btn btn-outline-success">Register</a>
+    </div>
+}
+else
+{
+    <div class="d-flex justify-content-between" style="width: 200px">
+        <a asp-controller="auth" asp-action="logout" class="auth-link btn btn-outline-danger">Log out</a>
+    </div>
+}

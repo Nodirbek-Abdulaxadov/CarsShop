@@ -1,6 +1,9 @@
-﻿namespace CarsShop.Areas.Admin.Controllers;
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace CarsShop.Areas.Admin.Controllers;
 
 [Area("admin")]
+[Authorize(AuthenticationSchemes = "Admin")]
 public class CarsController (ICarService carService,
                              ICategoryService categoryService,
                              IBrendService brendService)

@@ -13,6 +13,7 @@ builder.Services.AddTransient<IBrendService, BrendService>();
 builder.Services.AddTransient<ICarService, CarService>();
 builder.Services.AddTransient<IFileService, FileService>();
 builder.Services.AddTransient<IColorService, ColorService>();
+builder.Services.AddTransient<IAuthService, AuthService>();
 
 var mapConfig = new MapperConfiguration(cfg =>
 {
@@ -20,6 +21,17 @@ var mapConfig = new MapperConfiguration(cfg =>
 });
 
 builder.Services.AddSingleton(mapConfig.CreateMapper());
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+builder.Services.AddAuthentication()
+    .AddCookie("Admin", config =>
+    {
+        config.LoginPath = "/admin/auth/login";
+    })
+    .AddCookie("User", config =>
+    {
+        config.LoginPath = "/auth/login";
+    });
 
 var app = builder.Build();
 
@@ -34,6 +46,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

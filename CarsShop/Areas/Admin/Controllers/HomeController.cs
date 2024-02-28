@@ -1,10 +1,16 @@
-﻿namespace CarsShop.Areas.Admin.Controllers;
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace CarsShop.Areas.Admin.Controllers;
 
 [Area("admin")]
+[Authorize(AuthenticationSchemes = "Admin")]
 public class HomeController : Controller
-{
+{   
+
     public IActionResult Index()
     {
+        var res = HttpContext.User;
+        
         return View();
     }
 
