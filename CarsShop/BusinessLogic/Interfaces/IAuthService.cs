@@ -8,4 +8,5 @@ public interface IAuthService
     AuthResult CreateUser(RegisterDto registerDto);
     bool IsLoggedIn();
     void Logout(Role kim);
+    string GetFullName(Role kim);
 }

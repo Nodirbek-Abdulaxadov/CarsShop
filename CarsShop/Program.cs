@@ -1,3 +1,4 @@
+using AdminLab.Ants;
 using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -56,5 +57,7 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+LazyCat<AppDbContext>.InitializeLazyAdmin(app);
 
 app.Run();

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarsShop.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240228105022_UserRoleAdded")]
-    partial class UserRoleAdded
+    [Migration("20240229111928_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -220,10 +220,10 @@ namespace CarsShop.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = 11111111,
                             Address = "Database",
                             FISH = "Super Admin",
-                            Password = "Super.Admin",
+                            Password = "f0a1f305f7f9a57d52a0710420881c0bb2786aff36b0507bb5bca18cea54c3fa",
                             Role = 0,
                             TelNomer = "+998901234567"
                         });

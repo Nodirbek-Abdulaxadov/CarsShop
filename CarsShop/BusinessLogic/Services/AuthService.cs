@@ -48,7 +48,7 @@ public class AuthService(IUnitOfWork unitOfWork,
         {
             FISH = registerDto.FullName!,
             TelNomer = registerDto.TelNomer!,
-            Password = registerDto.Password!,
+            Password = PasswordHasher.HashPassword(registerDto.Password!),
             Address = registerDto.Address!,
             Role = Role.User
         };
@@ -59,6 +59,12 @@ public class AuthService(IUnitOfWork unitOfWork,
         {
             IsSuccess = true
         };
+    }
+
+    public string GetFullName(Role kim)
+    {
+        var res = _httpContextAccessor.HttpContext!.AuthenticateAsync(kim.ToString());
+        return res.Result.Principal!.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value!;
     }
 
     public bool IsLoggedIn()
@@ -91,7 +97,7 @@ public class AuthService(IUnitOfWork unitOfWork,
             };
         }
 
-        if (user.Password != loginDto.Password)
+        if (!PasswordHasher.VerifyPassword(loginDto.Password, user.Password))
         {
             return new()
             {

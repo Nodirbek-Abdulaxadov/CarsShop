@@ -40,6 +40,16 @@ public class FileService(IWebHostEnvironment webHostEnvironment)
         return $"~/images/{uniqueFileName}";
     }
 
+    public List<string> UploadMultipleImage(List<IFormFile> files)
+    {
+        List<string> result = new List<string>();
+        foreach (var file in files)
+        {
+            result.Add(UploadImage(file));
+        }
+        return result;
+    }
+
     public List<string> UploadMultipleImageWithoutBg(List<IFormFile> files)
     {
         List<string> urls = new();

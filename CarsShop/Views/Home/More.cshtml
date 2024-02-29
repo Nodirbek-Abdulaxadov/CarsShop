@@ -1,0 +1,65 @@
+﻿@model CarDto
+
+<div class="d-flex justify-content-center mt-5">
+    <div>
+        <div class="container-xxl flex-grow-1 " style="width: 800px">
+            <div class="card">
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner p-5">
+                        @{
+                            var firstColor = Model.Colors.First();
+                            int count = firstColor.Images.Count;
+                        }
+                        @for (int i = 0; i < count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                <div class="carousel-item active">
+                                    <img src="@firstColor.Images[i].Url" style="object-fit: contain" height="400" width="400" asp-append-version="true" class="d-block w-100" alt="...">
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="carousel-item">
+                                    <img src="@firstColor.Images[i].Url" style="object-fit: contain" height="400" width="600" asp-append-version="true" class="d-block w-100" alt="...">
+                                </div>
+                            }
+                        }
+                    </div>
+                    <button class="bg-secondary carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="bg-secondary carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ms-5" style="width: 400px">
+        <h3>@Model.Brend.Name</h3>
+        <h1 class="mb-5" style="font-size: 50px; font-weight: bold">@Model.Name</h1>
+        <hr />
+
+        <h2>Colors:</h2>
+        <div class="d-flex justify-content-start">
+            @foreach (var color in Model.Colors)
+            {
+                <a href="#@color.Name" class="d-flex justify-content-center flex-column me-3" style="width: 80px; text-decoration: none; color: black">
+                    <!-- circle div -->
+                    <div class="circle" style="height: 70px; width: 70px; background-color: @color.HexCode; border: 1px solid #efefef; border-radius: 50%"></div>
+                    <h5 class="mt-1 card-header text-center">@color.Name</h5>
+                </a>
+            }
+        </div>
+        <hr />
+        <div class="d-flex justify-content-between mt-5" style="align-items: center">
+            <div class="d-block">
+                <h4>Price: <span style="font-size: 33px" class="d-inline">$@Model.Price</span></h4>
+            </div>
+            <a class="btn btn-primary">Order now</a>
+        </div>
+    </div>
+</div>

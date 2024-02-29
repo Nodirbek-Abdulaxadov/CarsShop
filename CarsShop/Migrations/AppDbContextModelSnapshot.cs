@@ -4,7 +4,6 @@ using CarsShop.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,11 +11,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarsShop.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240223104517_InitialCreate")]
-    partial class InitialCreate
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -149,31 +146,6 @@ namespace CarsShop.Migrations
                     b.ToTable("Images");
                 });
 
-            modelBuilder.Entity("CarsShop.Data.Entities.Model", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CarId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Narxi")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CarId");
-
-                    b.ToTable("Models");
-                });
-
             modelBuilder.Entity("CarsShop.Data.Entities.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -231,6 +203,9 @@ namespace CarsShop.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
                     b.Property<string>("TelNomer")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -238,6 +213,17 @@ namespace CarsShop.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 11111111,
+                            Address = "Database",
+                            FISH = "Super Admin",
+                            Password = "f0a1f305f7f9a57d52a0710420881c0bb2786aff36b0507bb5bca18cea54c3fa",
+                            Role = 0,
+                            TelNomer = "+998901234567"
+                        });
                 });
 
             modelBuilder.Entity("CarsShop.Data.Entities.Car", b =>
@@ -281,17 +267,6 @@ namespace CarsShop.Migrations
                     b.Navigation("Color");
                 });
 
-            modelBuilder.Entity("CarsShop.Data.Entities.Model", b =>
-                {
-                    b.HasOne("CarsShop.Data.Entities.Car", "Car")
-                        .WithMany("Models")
-                        .HasForeignKey("CarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Car");
-                });
-
             modelBuilder.Entity("CarsShop.Data.Entities.Order", b =>
                 {
                     b.HasOne("CarsShop.Data.Entities.Car", "Car")
@@ -319,8 +294,6 @@ namespace CarsShop.Migrations
             modelBuilder.Entity("CarsShop.Data.Entities.Car", b =>
                 {
                     b.Navigation("Colors");
-
-                    b.Navigation("Models");
 
                     b.Navigation("Orders");
                 });

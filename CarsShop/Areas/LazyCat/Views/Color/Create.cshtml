@@ -1,0 +1,36 @@
+@using CarsShop.Data.Entities
+@model Color
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label">Id</label>
+            <input type="number" asp-for="Id" id="idId" class="form-control" />
+            <span asp-validation-for="Id" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label">CarId</label>
+            <input type="number" asp-for="CarId" id="idCarId" class="form-control" />
+            <span asp-validation-for="CarId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label">HexCode</label>
+            <input type="text" asp-for="HexCode" id="idHexCode" class="form-control" />
+            <span asp-validation-for="HexCode" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Name</label>
+            <input type="text" asp-for="Name" id="idName" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

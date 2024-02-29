@@ -51,4 +51,10 @@ public class AuthController(IAuthService authService)
             return View(registerDto);
         }
     }
+
+    public IActionResult Logout()
+    {
+        _authService.Logout(Role.User);
+        return RedirectToAction("Index", "Home");
+    }
 }

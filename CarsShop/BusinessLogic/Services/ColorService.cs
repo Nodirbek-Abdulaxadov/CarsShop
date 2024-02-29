@@ -16,7 +16,7 @@ public class ColorService(IUnitOfWork unitOfWork,
             throw new ArgumentNullException(nameof(carDto));
         }
 
-        var images = _fileService.UploadMultipleImageWithoutBg(carDto.Files);
+        var images = _fileService.UploadMultipleImage(carDto.Files);
 
         Color newColor = new()
         {
@@ -79,7 +79,7 @@ public class ColorService(IUnitOfWork unitOfWork,
         var color = _unitOfWork.Colors.GetByIdWithImages(carDto.Id);
         if (carDto.Files.Any())
         {
-            var images = _fileService.UploadMultipleImageWithoutBg(carDto.Files);
+            var images = _fileService.UploadMultipleImage(carDto.Files);
 
             color.Images.AddRange(images.Select(i => new Image() { Url = i }));
         }

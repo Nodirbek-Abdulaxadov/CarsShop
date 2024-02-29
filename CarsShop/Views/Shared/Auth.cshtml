@@ -1,6 +1,10 @@
 ﻿<style>
     .auth-link {
-        width: 95px;
+        width: 100%;
+    }
+
+    .dropdown-toggle::after {
+        content: none;
     }
 </style>
 
@@ -14,8 +18,18 @@
     </div>
 }
 else
-{
-    <div class="d-flex justify-content-between" style="width: 200px">
-        <a asp-controller="auth" asp-action="logout" class="auth-link btn btn-outline-danger">Log out</a>
+{ 
+    <div class="dropdown me-3">
+        <button class="btn btn-secondary dropdown-toggle" style="height: 50px" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="d-flex justify-content-between" style="align-items: center">
+                <span style="font-size: 25px; color: white"><i class="bi bi-person-circle"></i></span>
+                <span class="ms-2">@authService.GetFullName(Role.User)</span>
+            </div>
+        </button>
+        <div class="dropdown-menu px-2">
+            <div class="d-flex justify-content-start">
+                <a asp-controller="auth" asp-action="logout" class="auth-link btn btn-outline-danger">Log out</a>
+            </div>
+        </div>
     </div>
 }

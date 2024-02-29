@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CarsShop.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -47,8 +47,9 @@ namespace CarsShop.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FISH = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TelNomer = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Role = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -106,27 +107,6 @@ namespace CarsShop.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Models",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Narxi = table.Column<double>(type: "float", nullable: false),
-                    CarId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Models", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Models_Cars_CarId",
-                        column: x => x.CarId,
-                        principalTable: "Cars",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
@@ -176,6 +156,11 @@ namespace CarsShop.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Address", "FISH", "Password", "Role", "TelNomer" },
+                values: new object[] { 11111111, "Database", "Super Admin", "f0a1f305f7f9a57d52a0710420881c0bb2786aff36b0507bb5bca18cea54c3fa", 0, "+998901234567" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Cars_BrendId",
                 table: "Cars",
@@ -197,11 +182,6 @@ namespace CarsShop.Migrations
                 column: "ColorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Models_CarId",
-                table: "Models",
-                column: "CarId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Orders_CarId",
                 table: "Orders",
                 column: "CarId");
@@ -217,9 +197,6 @@ namespace CarsShop.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Images");
-
-            migrationBuilder.DropTable(
-                name: "Models");
 
             migrationBuilder.DropTable(
                 name: "Orders");

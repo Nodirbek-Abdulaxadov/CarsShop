@@ -17,10 +17,10 @@ public class AppDbContext : DbContext
     {
         User superUser = new()
         {
-            Id = 1,
+            Id = 11111111,
             FISH = "Super Admin",
             TelNomer = "+998901234567",
-            Password = "Super.Admin",
+            Password = PasswordHasher.HashPassword("Super.Admin"),
             Address = "Database",
             Role = Role.Admin
         };
