@@ -5,22 +5,17 @@
 
 <form asp-action="Create">
     <div class="form-horizontal">
-        <div class="form-group">
-            <label class="control-label">Id</label>
-            <input type="number" asp-for="Id" id="idId" class="form-control" />
-            <span asp-validation-for="Id" class="text-danger"></span>
-        </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label class="control-label">ImageUrl</label>
             <input type="text" asp-for="ImageUrl" id="idImageUrl" class="form-control" />
             <span asp-validation-for="ImageUrl" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label class="control-label">Name</label>
             <input type="text" asp-for="Name" id="idName" class="form-control" />
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <input type="submit" value="Create" class="btn btn-primary" />
         </div>
     </div>

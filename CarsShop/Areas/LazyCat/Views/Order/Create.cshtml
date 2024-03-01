@@ -1,46 +1,63 @@
 @using CarsShop.Data.Entities
 @model Order
+@using CarsShop.Data
+@using CarsShop.Data.Entities
+@using CarsShop.Data.Entities
+@inject AppDbContext _context
+@{
+    var carList = _context.Set<Car>().ToList();
+    var userList = _context.Set<User>().ToList();
+}
 
 <h2>Create</h2>
 
 <form asp-action="Create">
     <div class="form-horizontal">
-        <div class="form-group">
-            <label class="control-label">Id</label>
-            <input type="number" asp-for="Id" id="idId" class="form-control" />
-            <span asp-validation-for="Id" class="text-danger"></span>
+        <div class="form-group mb-3">
+            <label asp-for="CarId" class="control-label">CarId</label>
+<select class="form-control" asp-for="CarId">
+    <option value="">-- Select CarId --</option>
+    @foreach (var item in carList)
+    {
+        <option value="@item.Id">@item.Name</option>
+    }
+</select>
+<span asp-validation-for="CarId" class="text-danger"></span>
         </div>
-        <div class="form-group">
-            <label class="control-label">CarId</label>
-            <input type="number" asp-for="CarId" id="idCarId" class="form-control" />
-            <span asp-validation-for="CarId" class="text-danger"></span>
-        </div>
-        <div class="form-group">
+
+        <div class="form-group mb-3">
             <label class="control-label">ColorName</label>
             <input type="text" asp-for="ColorName" id="idColorName" class="form-control" />
             <span asp-validation-for="ColorName" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label class="control-label">Date</label>
             <input type="date" asp-for="Date" id="idDate" class="form-control" />
             <span asp-validation-for="Date" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label class="control-label">ModelName</label>
             <input type="text" asp-for="ModelName" id="idModelName" class="form-control" />
             <span asp-validation-for="ModelName" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label class="control-label">Price</label>
             <input type="text" asp-for="Price" id="idPrice" class="form-control" />
             <span asp-validation-for="Price" class="text-danger"></span>
         </div>
-        <div class="form-group">
-            <label class="control-label">UserId</label>
-            <input type="number" asp-for="UserId" id="idUserId" class="form-control" />
-            <span asp-validation-for="UserId" class="text-danger"></span>
+        <div class="form-group mb-3">
+            <label asp-for="UserId" class="control-label">UserId</label>
+<select class="form-control" asp-for="UserId">
+    <option value="">-- Select UserId --</option>
+    @foreach (var item in userList)
+    {
+        <option value="@item.Id">@item.FISH</option>
+    }
+</select>
+<span asp-validation-for="UserId" class="text-danger"></span>
         </div>
-        <div class="form-group">
+
+        <div class="form-group mb-3">
             <input type="submit" value="Create" class="btn btn-primary" />
         </div>
     </div>

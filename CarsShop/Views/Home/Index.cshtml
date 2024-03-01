@@ -1,6 +1,11 @@
 ﻿@model IndexViewModel
 
 <style>
+    .form-links {
+        margin-left: 10px;
+        width: 120px;
+    }
+
     .carousel-item img {
         width: 100%;
         height: 600px;
@@ -21,11 +26,11 @@
         transition: 0.3s;
     }
 
-    .cart:hover {
-        cursor: pointer;
-        box-shadow: 0px 8px 13px -3px rgba(0,0,0,0.1);
-        transition: 0.3s;
-    }
+        .cart:hover {
+            cursor: pointer;
+            box-shadow: 0px 8px 13px -3px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
 
     .card img {
         height: 200px;
@@ -99,7 +104,14 @@
         @foreach (var car in Model.Cars)
         {
             <div class="card" style="width: 22rem;">
-                <img src="@car!.Colors!.FirstOrDefault()!.Images!.FirstOrDefault()!.Url" asp-append-version="true" class="card-img-top" alt="...">
+                @if (car.Colors.Any())
+                {
+                    <img src="@car!.Colors!.FirstOrDefault()!.Images!.FirstOrDefault()!.Url" asp-append-version="true" class="card-img-top" alt="...">
+                }
+                else
+                {
+                    <img src="~/assets/img/default.png" asp-append-version="true" class="card-img-top" alt="...">
+                }
                 <div class="card-body">
                     <div class="d-flex justify-content-between" style="align-items: center">
                         <div>

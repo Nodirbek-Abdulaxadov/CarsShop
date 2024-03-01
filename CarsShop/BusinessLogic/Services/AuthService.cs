@@ -146,6 +146,12 @@ public class AuthService(IUnitOfWork unitOfWork,
         };
     }
 
+    public string GetPhoneNumber(Role kim)
+    {
+        var res = _httpContextAccessor.HttpContext!.AuthenticateAsync(kim.ToString());
+        return res.Result.Principal!.Claims.FirstOrDefault(c => c.Type == ClaimTypes.MobilePhone)?.Value!;
+    }
+
     public async void Logout(Role kim)
     {
         await _httpContextAccessor.HttpContext!.SignOutAsync(kim.ToString());

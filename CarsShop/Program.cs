@@ -15,6 +15,7 @@ builder.Services.AddTransient<ICarService, CarService>();
 builder.Services.AddTransient<IFileService, FileService>();
 builder.Services.AddTransient<IColorService, ColorService>();
 builder.Services.AddTransient<IAuthService, AuthService>();
+builder.Services.AddTransient<IOrderService, OrderService>();
 
 var mapConfig = new MapperConfiguration(cfg =>
 {

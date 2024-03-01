@@ -18,16 +18,19 @@ public class ColorService(IUnitOfWork unitOfWork,
 
         var images = _fileService.UploadMultipleImage(carDto.Files);
 
-        Color newColor = new()
+        for (int i = 0; i < 100; i++)
         {
-            Name = carDto.Name,
-            HexCode = carDto.HexCode,
-            CarId = carDto.CarId,
-            Images = images.Select(i => new Image() { Url = i }).ToList(),
-            Car = null
-        };
+            Color newColor = new()
+            {
+                Name = carDto.Name,
+                HexCode = carDto.HexCode,
+                CarId = carDto.CarId++,
+                Images = images.Select(i => new Image() { Url = i }).ToList(),
+                Car = null
+            };
 
-        _unitOfWork.Colors.Add(newColor);
+            _unitOfWork.Colors.Add(newColor);
+        }
     }
 
     public void Delete(int id)

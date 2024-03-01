@@ -9,4 +9,5 @@ public interface IAuthService
     bool IsLoggedIn();
     void Logout(Role kim);
     string GetFullName(Role kim);
+    string GetPhoneNumber(Role kim);
 }

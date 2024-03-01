@@ -44,14 +44,15 @@
         <hr />
 
         <h2>Colors:</h2>
+        <input type="hidden" id="colorId" value="@Model.Colors.First().Id" />
         <div class="d-flex justify-content-start">
             @foreach (var color in Model.Colors)
             {
-                <a href="#@color.Name" class="d-flex justify-content-center flex-column me-3" style="width: 80px; text-decoration: none; color: black">
+                <div onclick="ChangeColor(@color.Id)" class="d-flex justify-content-center flex-column me-3" style="width: 80px; text-decoration: none; color: black">
                     <!-- circle div -->
                     <div class="circle" style="height: 70px; width: 70px; background-color: @color.HexCode; border: 1px solid #efefef; border-radius: 50%"></div>
                     <h5 class="mt-1 card-header text-center">@color.Name</h5>
-                </a>
+                </div>
             }
         </div>
         <hr />
@@ -59,7 +60,26 @@
             <div class="d-block">
                 <h4>Price: <span style="font-size: 33px" class="d-inline">$@Model.Price</span></h4>
             </div>
-            <a class="btn btn-primary">Order now</a>
+            <button data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary">Order now</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure order this car?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" onclick="order(@Model.Id)" data-bs-dismiss="modal">Yes</button>
+            </div>
         </div>
     </div>
 </div>

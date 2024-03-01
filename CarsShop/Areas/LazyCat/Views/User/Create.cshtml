@@ -5,37 +5,32 @@
 
 <form asp-action="Create">
     <div class="form-horizontal">
-        <div class="form-group">
-            <label class="control-label">Id</label>
-            <input type="number" asp-for="Id" id="idId" class="form-control" />
-            <span asp-validation-for="Id" class="text-danger"></span>
-        </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label class="control-label">Address</label>
             <input type="text" asp-for="Address" id="idAddress" class="form-control" />
             <span asp-validation-for="Address" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label class="control-label">FISH</label>
             <input type="text" asp-for="FISH" id="idFISH" class="form-control" />
             <span asp-validation-for="FISH" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label class="control-label">Password</label>
             <input type="text" asp-for="Password" id="idPassword" class="form-control" />
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label asp-for="Role" class="control-label">Role</label>
             <select class="form-control" asp-for="Role" asp-items="Html.GetEnumSelectList<Role>()"></select>
             <span asp-validation-for="Role" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label class="control-label">TelNomer</label>
             <input type="text" asp-for="TelNomer" id="idTelNomer" class="form-control" />
             <span asp-validation-for="TelNomer" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <input type="submit" value="Create" class="btn btn-primary" />
         </div>
     </div>

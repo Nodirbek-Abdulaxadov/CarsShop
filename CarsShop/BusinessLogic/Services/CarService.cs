@@ -19,18 +19,22 @@ public class CarService(IUnitOfWork unitOfWork)
         {
             throw new CustomException("Name", "Car name is required");
         }
-
-        Car car = new()
+        
+        for (int i = 0; i < 100; i++)
         {
-            Name = carDto.Name,
-            Description = carDto.Description,
-            Price = carDto.Price,
-            CategoryId = carDto.CategoryId,
-            BrendId = carDto.BrendId,
-            Brend = null,
-            Category = null
-        };
-        _unitOfWork.Cars.Add(car);
+
+            Car car = new()
+            {
+                Name = carDto.Name,
+                Description = carDto.Description,
+                Price = carDto.Price,
+                CategoryId = carDto.CategoryId,
+                BrendId = carDto.BrendId,
+                Brend = null,
+                Category = null
+            };
+            _unitOfWork.Cars.Add(car);
+        }
     }
 
     public void Delete(int id)

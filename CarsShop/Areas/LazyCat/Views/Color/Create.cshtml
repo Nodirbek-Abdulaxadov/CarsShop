@@ -1,31 +1,39 @@
 @using CarsShop.Data.Entities
 @model Color
+@using CarsShop.Data
+@using CarsShop.Data.Entities
+@inject AppDbContext _context
+@{
+    var carList = _context.Set<Car>().ToList();
+}
 
 <h2>Create</h2>
 
 <form asp-action="Create">
     <div class="form-horizontal">
-        <div class="form-group">
-            <label class="control-label">Id</label>
-            <input type="number" asp-for="Id" id="idId" class="form-control" />
-            <span asp-validation-for="Id" class="text-danger"></span>
+        <div class="form-group mb-3">
+            <label asp-for="CarId" class="control-label">CarId</label>
+<select class="form-control" asp-for="CarId">
+    <option value="">-- Select CarId --</option>
+    @foreach (var item in carList)
+    {
+        <option value="@item.Id">@item.Name</option>
+    }
+</select>
+<span asp-validation-for="CarId" class="text-danger"></span>
         </div>
-        <div class="form-group">
-            <label class="control-label">CarId</label>
-            <input type="number" asp-for="CarId" id="idCarId" class="form-control" />
-            <span asp-validation-for="CarId" class="text-danger"></span>
-        </div>
-        <div class="form-group">
+
+        <div class="form-group mb-3">
             <label class="control-label">HexCode</label>
             <input type="text" asp-for="HexCode" id="idHexCode" class="form-control" />
             <span asp-validation-for="HexCode" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label class="control-label">Name</label>
             <input type="text" asp-for="Name" id="idName" class="form-control" />
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <input type="submit" value="Create" class="btn btn-primary" />
         </div>
     </div>
