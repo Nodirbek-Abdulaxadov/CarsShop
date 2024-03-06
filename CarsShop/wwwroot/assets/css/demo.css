@@ -1,0 +1,31 @@
+
+.div2 {
+    display: flex;
+    justify-content: center;
+}
+
+.div2 button {
+    margin: 0 5px;
+}
+
+.modal-foter {
+    padding: 15px;
+}
+
+.plus-minus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+}
+
+.plus-minus button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: #f8f9fa;
+    font-size: 20px;
+    color: #000;
+    cursor: pointer;
+}

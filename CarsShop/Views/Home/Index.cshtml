@@ -122,8 +122,9 @@
                             <h5 class="card-text">Price: $@car.Price</h5>
                         </div>
                     </div>
-                    <div class="my-2">
-                        <a asp-controller="home" asp-action="more" asp-route-id="@car.Id" class="w-100 btn btn-dark">More</a>
+                    <div class="my-2 d-flex justify-content-between">
+                        <a asp-controller="home" asp-action="more" asp-route-id="@car.Id" class="btn btn-dark" style="width: 80%">More</a>
+                        <button onclick="updateCart(@car.Id)" class="btn btn-outline-primary" style="font-size: 18px"><i class="bi bi-bag-plus"></i></button>
                     </div>
                 </div>
             </div>

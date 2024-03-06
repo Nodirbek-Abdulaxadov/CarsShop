@@ -93,4 +93,10 @@ public class HomeController (ICarService carService,
         _orderService.Add(carId, colorId);
         return RedirectToAction("Index");
     }
+
+    public IActionResult Get(int id)
+    {
+        var car = _carService.GetById(id);
+        return Json(car);
+    }
 }
