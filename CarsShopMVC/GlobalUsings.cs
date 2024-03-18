@@ -1,0 +1,13 @@
+﻿global using CarsShopMVC.Data.Entities;
+global using CarsShopMVC.Data.Interfaces;
+global using Microsoft.EntityFrameworkCore;
+global using CarsShopMVC.Data;
+global using CarsShopMVC.Data.Repositories;
+global using CarsShopMVC.BusinessLogic.DTOs.CategoryDTOs;
+global using CarsShopMVC.BusinessLogic.DTOs.BrendDTOs;
+global using CarsShopMVC.BusinessLogic.DTOs.CarDTOs;
+global using CarsShopMVC.BusinessLogic.DTOs.ColorDTOs;
+global using CarsShopMVC.BusinessLogic.Common;
+global using CarsShopMVC.BusinessLogic.Interfaces;
+global using CarsShopMVC.BusinessLogic.Services;
+global using Microsoft.AspNetCore.Mvc;

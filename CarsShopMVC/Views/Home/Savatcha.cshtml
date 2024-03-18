@@ -1,0 +1,30 @@
+﻿hello
+
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Your cart items</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="cart-items" id="datadiv">
+                    <h4>There is no any items yet!</h4>
+
+                </div>
+            </div>
+            <div class="modal-foter">
+                <hr>
+                <div class="div1 d-flex justify-content-between">
+                    <span>Total price: </span>
+                    <span id="total">$ 0</span>
+                </div>
+
+                <div class="div2">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button onclick="checkOut();" type="button" class="btn btn-warning">Buy now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

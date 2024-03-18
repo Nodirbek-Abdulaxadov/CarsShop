@@ -1,0 +1,15 @@
+﻿global using CarsShop.Application.DTOs.CategoryDTOs;
+global using CarsShop.Application.DTOs.BrendDTOs;
+global using CarsShop.Application.DTOs.CarDTOs;
+global using CarsShop.Application.DTOs.ColorDTOs;
+global using CarsShop.Domain.Entities;
+global using Microsoft.AspNetCore.Http;
+global using FluentValidation;
+global using AutoMapper;
+global using GenericRepository;
+global using CarsShop.Infrastucture.Interfaces;
+global using CarsShop.Application.Interfaces;
+global using CarsShop.Application.Common.Exceptions;
+global using FluentValidation.Results;
+global using System.Text;
+global using CarsShop.Application.Common;

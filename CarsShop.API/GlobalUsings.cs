@@ -1,0 +1,14 @@
+﻿global using CarsShop.API;
+global using CarsShop.Infrastucture;
+global using CarsShop.Infrastucture.Interfaces;
+global using CarsShop.Infrastucture.Repositories;
+global using Microsoft.EntityFrameworkCore;
+global using AutoMapper;
+global using CarsShop.Application.Common;
+global using CarsShop.Application.Common.Validators;
+global using CarsShop.Application.Interfaces;
+global using CarsShop.Application.Services;
+global using CarsShop.Domain.Entities;
+global using FluentValidation;
+global using CarsShop.Application.Common.Exceptions;
+global using Microsoft.AspNetCore.Mvc;
