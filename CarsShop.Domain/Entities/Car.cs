@@ -7,9 +7,9 @@ public class Car : BaseEntity
     public double Price { get; set; }
 
     public int CategoryId { get; set; }
-    public Category Category { get; set; } = new();
+    public Category? Category { get; set; }
     public int BrendId { get; set; }
-    public Brend Brend { get; set; } = new();
+    public Brend? Brend { get; set; }
 
     public List<Color> Colors { get; set; } = new();
     public List<Order> Orders { get; set; } = new();

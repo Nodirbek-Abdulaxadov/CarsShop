@@ -7,7 +7,4 @@ public class AddCarDto
     public double Price { get; set; }
     public int CategoryId { get; set; }
     public int BrendId { get; set; }
-
-    public List<CategoryDto> Categories { get; set; } = new();
-    public List<BrendDto> Brends { get; set; } = new();
 }

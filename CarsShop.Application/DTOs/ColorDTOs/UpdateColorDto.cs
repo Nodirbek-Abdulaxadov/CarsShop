@@ -2,7 +2,7 @@
 
 namespace CarsShop.Application.DTOs.ColorDTOs;
 
-public class UpdateColorDto : ColorDto
+public class UpdateColorDto : AddColorDto
 {
-    public List<IFormFile> Files { get; set; } = new();
+    public int Id { get; set; }
 }

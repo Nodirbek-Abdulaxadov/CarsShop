@@ -2,4 +2,5 @@
 
 public interface ICarInterface : IRepository<Car>
 {
+    new Task<List<Car>> GetAllAsync();
 }

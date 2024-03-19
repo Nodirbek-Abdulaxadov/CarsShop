@@ -29,6 +29,9 @@ public static class Startup
         builder.Services.AddScoped<IValidator<Color>, ColorValidator>();
 
         builder.Services.AddTransient<ICategoryService, CategoryService>();
+        builder.Services.AddTransient<IBrendService, BrendService>();
+        builder.Services.AddTransient<ICarService, CarService>();
+        builder.Services.AddTransient<IColorService, ColorService>();
     }
 
     public static void ConfigureMiddlewares(this WebApplication app)

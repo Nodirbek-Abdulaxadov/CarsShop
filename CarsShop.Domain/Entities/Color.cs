@@ -6,7 +6,7 @@ public class Color : BaseEntity
     public string HexCode { get; set; } = null!;
 
     public int CarId { get; set; }
-    public Car Car { get; set; } = new();
+    public Car? Car { get; set; }
 
     public List<Image> Images { get; set; } = new();
 }

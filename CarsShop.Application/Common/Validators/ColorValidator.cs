@@ -15,5 +15,9 @@ public class ColorValidator : AbstractValidator<Color>
         RuleFor(x => x.CarId)
             .GreaterThan(0)
             .WithMessage("CarId is required");
+
+        RuleFor(x => x.Images)
+            .NotEmpty()
+            .WithMessage("Images are required");
     }
 }
